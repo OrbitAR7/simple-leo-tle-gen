@@ -55,6 +55,7 @@ Open it in your browser to start using the tool.
 
   * Repeat-ground-track constellation generation
   * Additional visualization modes
-  * <img width="1841" height="916" alt="Screenshot 2025-11-13 at 2 21 13 PM" src="https://github.com/user-attachments/assets/e07153e0-723d-4738-9a65-62ac7c01c49e" />
+
+<img width="1841" height="916" alt="Screenshot 2025-11-13 at 2 21 13 PM" src="https://github.com/user-attachments/assets/e07153e0-723d-4738-9a65-62ac7c01c49e" />
 
 
