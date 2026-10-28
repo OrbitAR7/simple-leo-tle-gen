@@ -1,62 +1,29 @@
-# **LEOTLE Constellation Generator**
+# simple-leo-tle-gen
 
-A lightweight app for generating and visualizing LEO satellite constellations (Walker configurations), producing valid TLE files and interactive Earth-map visualizations.
+A small Streamlit app that builds a Walker Delta constellation (i: T/P/F) in circular LEO, writes it out as TLEs, and plots the satellites on a map.
 
----
+Each satellite gets RAAN = 360°·p/P and mean anomaly = 360°·s/S + 360°·F·p/T, where p is its plane index, s its slot in the plane, S = T/P satellites per plane and F the phasing factor. The epoch is the current UTC time. Mean motion comes from the two-body period at the requested altitude. When SGP4 reads it back, the mean altitude comes out within about 0.3 km of the request, because the TLE mean motion is a Kozai mean element, not a two-body one.
 
-## **Features**
+The TLEs are synthetic. The NORAD IDs and international designators are random placeholders, and drag terms are zero. They are meant for loading into SGP4-based tools (STK, GMAT, Skyfield, etc.) to study geometry and coverage, not for tracking real objects.
 
-* Generate Two-Line Element (TLE) files for custom LEO constellations
-* Support for Walker Delta and Circular configurations
-* Visualize satellite orbits and positions on a realistic Earth map
-* Download generated TLE files and plots
-* Simple, interactive Streamlit interface
-
----
-
-## **Installation & Running the App**
-
-### **1. Requirements**
-
-* Python **3.9+**
-* `pip`
-
-### **2. (Optional but recommended) Create a virtual environment**
+## Run
 
 ```sh
-python -m venv venv
-source venv/bin/activate
-```
-
-### **3. Install dependencies**
-
-```sh
+python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
-```
-
-### **4. Launch the app**
-
-```sh
 streamlit run streamlit_app.py
 ```
 
-### **5. Open the link in your terminal**
+Streamlit prints a local URL (e.g. `http://localhost:8501`).
 
-Streamlit will print a local URL (e.g., `http://localhost:8501`).
-Open it in your browser to start using the tool.
+## Files
 
----
+- `streamlit_app.py`: UI (altitude, inclination, planes, satellites per plane, F)
+- `t_utils.py`: TLE generation, checksums, plots
 
-## **Notes**
+## Possible extensions
 
-* If any modules are missing, you can install them manually with `pip install <package>`.
-* Using a virtual environment avoids dependency conflicts.
-* **Future versions** will include:
-
-  * Repeat-ground-track constellation generation
-  * Additional visualization modes
-
+- Walker Star (RAAN spread over 180°) and repeat-ground-track constellations
+- J2-consistent mean elements (sun-synchronous inclination for a given altitude)
 
 <img width="1828" height="885" alt="Screenshot 2025-11-13 at 2 23 59 PM" src="https://github.com/user-attachments/assets/4c7d5374-77ee-48ad-9290-11a71ea5af95" />
-
-

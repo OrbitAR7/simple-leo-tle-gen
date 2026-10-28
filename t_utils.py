@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timezone
 import random
 import string
 import cartopy
@@ -64,7 +64,7 @@ def generate_constellation_tle(altitude, inclination, num_planes, sats_per_plane
     omega = 0  # argument of perigee (deg)
 
     # Epoch calculation
-    current_date = datetime.now()
+    current_date = datetime.now(timezone.utc)  # TLE epochs are UTC
     epoch_year = current_date.year % 100
     day_of_year = current_date.timetuple().tm_yday
     hour_fraction = (current_date.hour + current_date.minute/60 +
